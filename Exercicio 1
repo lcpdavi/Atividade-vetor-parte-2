@@ -1,0 +1,72 @@
+#include <stdio.h>
+int main() {
+    int idade, respostasOtimo = 0, respostasBom = 0, respostasRegular = 0, respostasRuim = 0, respostasPessimo = 0, diferencaIdadeOtimoRuim;
+    int maiorIdadeOtimo = 0, maiorIdadeRuim = 0, idadeOtimo, idadeRuim;
+    float percenBomRegular, percenPessimo, mediaIdadeRuim;
+    char opiniao;
+    
+    
+    do{
+        printf("Insira sua idade:\n");
+        scanf("%d", &idade);
+
+        printf("Qual sua opiniao sobre o filme:\n");
+        printf("A - Otimo\n");
+        printf("B - Bom\n");
+        printf("C - Regular\n");
+        printf("D - Ruim\n");
+        printf("E - Pessimo\n");
+        printf("Opiniao:\n ");
+        scanf(" %c", &opiniao);
+
+        switch(opiniao) {
+            case 'A':
+                respostasOtimo++;
+                if (idade > maiorIdadeOtimo) {
+                    maiorIdadeOtimo = idade;
+                }
+                break;
+                
+            case 'B':
+                respostasBom++;
+                break;
+                
+            case 'C':
+                respostasRegular++;
+                break;
+                
+            case 'D':
+                respostasRuim++;
+                if (idade > maiorIdadeRuim) {
+                    maiorIdadeRuim = idade;
+                    idadeRuim = idade;
+                }
+                break;
+                
+            case 'E':
+                respostasPessimo++;
+                if (idade > maiorIdadeRuim) {
+                    maiorIdadeRuim = idade;
+                    idadeRuim = idade;
+                }
+                break;
+                
+            default:
+                printf("Opcao Invalida");
+        }
+    }while(opiniao != 0);
+
+    percenBomRegular = (respostasBom - respostasRegular) / respostasBom * 5;
+    percenPessimo = respostasPessimo / 5 * 100;
+    mediaIdadeRuim = idadeRuim / respostasRuim;
+    diferencaIdadeOtimoRuim = maiorIdadeOtimo / maiorIdadeRuim;
+   
+    printf("Quantidade de respostas Otimo: %d\n", respostasOtimo);
+    printf("Percentual entre respostas Bom e Regular: %.2f\n", percenBomRegular);
+    printf("Media de idade das pessoas que responderam Ruim: %.2f\n", mediaIdadeRuim);
+    printf("Percentagem de respostas Pessimo: %.2f\n", percenPessimo);
+    printf("Maior idade que respondeu Pessimo: %d\n", maiorIdadeRuim);
+    printf("Diferenca de idade entre a maior idade que respondeu Otimo e Ruim: %d\n", diferencaIdadeOtimoRuim);
+
+    return 0;
+}
